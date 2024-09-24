@@ -2,8 +2,8 @@
 # exit on error
 set -o errexit
 
-sudo apt-get update
-sudo apt-get install redis-server
+apt-get update
+apt-get install redis-server
 redis-server --port 6380
 
 pip install -r wsl-requirements.txt
