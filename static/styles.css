@@ -1,0 +1,80 @@
+body {
+    font-family: Concert One, Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-image: url("shroom_bkg.png");
+    background-size: 400px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+button {
+    background-color: #fa0057;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #fa0057;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.hover-underline {
+    text-decoration: none;
+    color: #de6439;
+}
+
+.hover-underline:hover {
+    text-decoration: underline;
+    color: #de6439;
+}
+
+.custom-card-bg {
+    background-color: rgb(74, 67, 63);
+}
+
+.custom-card-bg .card-body {
+    color: #ffffff;
+}
+
+.btn-outline-custom {
+  color: #de6439;
+  border-color: #de6439;
+  background-color: #fcd4c2;
+}
+.btn-outline-custom:hover {
+  color: #ffffff;
+  background-color: #9f6955;
+  border-color: #9f6955;
+}
+
+.disclaimer {
+    color: #de6439;
+}
+
+.wacky {
+    font-family: Matemasie, Arial, sans-serif;
+}
+
+.pointy {
+    font-family: Spicy Rice, Arial, sans-serif;
+}
