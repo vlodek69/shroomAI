@@ -7,3 +7,5 @@ pip install setuptools
 pip install gunicorn flask
 pip install -r requirements.txt
 pip install tensorflow
+
+python3 -m utils.populate_shroom_db
