@@ -1,0 +1,24 @@
+version: '3.12'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=${REDIS_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - USER_AGENT_HEADER=${USER_AGENT_HEADER}
+    command: >
+      sh -c "python3 -m utils.populate_shroom_db && gunicorn -b 0.0.0.0:8000 app:app"
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    restart: always
+
+  redis:
+    image: "redis:alpine"  # Use a lightweight Redis image
+    ports:
+      - "6379:6379"
+    restart: always

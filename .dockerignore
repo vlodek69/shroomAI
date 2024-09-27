@@ -1,0 +1,29 @@
+# .dockerignore
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+.wsl-venv/
+.wsl-venv2/
+
+# Cache and logs
+*.log
+*.cache
+*.egg-info
+*.eggs
+
+# Docker-specific
+Dockerfile
+docker-compose.yml
+
+# Git
+.git/
+.gitignore
+
+# Environment variables
+.env
