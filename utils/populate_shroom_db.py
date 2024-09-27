@@ -1,4 +1,5 @@
 import os
+import time
 
 import dill
 import redis
@@ -117,6 +118,13 @@ HEADERS = {
 }
 
 
+def is_redis_ready():
+    try:
+        return redis_client.ping()
+    except redis.ConnectionError:
+        return False
+
+
 def populate_redis(scraper: ShroomScraper) -> None:
     print("\033[33mStarting...\033[0m")
     total_mushrooms = len(CLASS_NAMES)
@@ -135,7 +143,12 @@ def populate_redis(scraper: ShroomScraper) -> None:
 
 if __name__ == "__main__":
     scraper = ShroomScraper(BASE_URL, HEADERS)
-    if redis_client.get("db_initialized"):
+
+    while not is_redis_ready():
+        print("Waiting for Redis to be ready...")
+        time.sleep(1)
+
+    if redis_client.get("db_initialized") is not None:
         print("Database already initialized. Skipping population.")
     else:
         redis_client.flushdb()
