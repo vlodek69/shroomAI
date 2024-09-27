@@ -7,8 +7,6 @@ WORKDIR /app
 
 COPY . /app/
 
-# RUN apt-get update && apt-get install -y redis-tools
-
 RUN pip install --upgrade pip \
     && pip install setuptools \
     && pip install gunicorn flask \
@@ -21,7 +19,4 @@ VOLUME /data
 
 EXPOSE 8000
 
-# Populate the database
-#RUN python3 -m utils.populate_shroom_db
-
-CMD service redis-server start --appendonly yes --dir /data && python3 -m utils.populate_shroom_db && gunicorn --bind 0.0.0.0:8000 app:app
+CMD service redis-server start --appendonly yes --dir /data && gunicorn --bind 0.0.0.0:8000 app:app && python3 -m utils.populate_shroom_db
