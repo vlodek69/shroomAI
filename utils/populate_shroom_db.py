@@ -129,10 +129,14 @@ def populate_redis(scraper: ShroomScraper) -> None:
         dilled_shroom = dill.dumps(shroom)
         redis_client.set(str(key), dilled_shroom)
         print(f"{key + 1}/{total_mushrooms} {value} \033[32mSUCCESS\033[0m")
+    redis_client.set("db_initialized", "true")
     print("\033[32mData populated successfully.\033[0m")
 
 
 if __name__ == "__main__":
     scraper = ShroomScraper(BASE_URL, HEADERS)
-    redis_client.flushdb()
-    populate_redis(scraper)
+    if redis_client.get("db_initialized"):
+        print("Database already initialized. Skipping population.")
+    else:
+        redis_client.flushdb()
+        populate_redis(scraper)
