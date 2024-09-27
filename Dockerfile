@@ -22,4 +22,4 @@ EXPOSE 8000
 # Populate the database
 #RUN python3 -m utils.populate_shroom_db
 
-CMD service redis-server start && python3 -m utils.populate_shroom_db && gunicorn --bind 0.0.0.0:8000 wsgi:app
+CMD service redis-server start && python3 -m utils.populate_shroom_db && gunicorn --bind 0.0.0.0:8000 app:app
